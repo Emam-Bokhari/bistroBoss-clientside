@@ -5,8 +5,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { router } from './Routes/Routes';
-import { HelmetProvider } from 'react-helmet-async';
 import AuthProvider from './AuthProvider/AuthProvider';
+import { HelmetProvider } from 'react-helmet-async';
 import {
   QueryClient,
   QueryClientProvider,
@@ -17,14 +17,14 @@ const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProvider>
     <HelmetProvider>
      <QueryClientProvider client={queryClient} >
-     <AuthProvider>
       <div className='max-w-screen-xl mx-auto'>
         <RouterProvider router={router} />
       </div>
-      </AuthProvider>
      </QueryClientProvider>
     </HelmetProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

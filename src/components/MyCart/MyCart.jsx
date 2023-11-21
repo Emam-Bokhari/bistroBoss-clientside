@@ -4,6 +4,7 @@ import axios from 'axios';
 import useCart from './../../hooks/useCart';
 import DataTable from "react-data-table-component";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
     const [cart,refetch]=useCart()
@@ -54,7 +55,9 @@ refetch()
  
                     <h2>Total Price: ${cart.reduce((total,item)=>total+item.price,0)}</h2>
   
-                    <button className="bg-[#D1A054] px-3 py-1 rounded text-lg" >Pay</button>
+                   {cart.length?<Link to="/dashboard/payment" > <button className="bg-[#D1A054] px-3 py-1 rounded text-lg" >Pay</button></Link>
+                   : 
+                    <button disabled className="bg-gray-300 px-3 py-1 rounded text-lg" >Pay</button>}
             </div>
 
         <DataTable 

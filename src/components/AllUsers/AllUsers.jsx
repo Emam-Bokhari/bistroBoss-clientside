@@ -4,7 +4,13 @@ import DataTable from "react-data-table-component";
 import { FaUsers } from "react-icons/fa6";
 import {RiDeleteBin6Line} from "react-icons/ri"
 
+
+
+
 const AllUsers = () => {
+    
+   
+
     const axiosSecure=useAxiosSecure()
     const {data:users=[],refetch}=useQuery({
         queryKey:['users'],

@@ -3,29 +3,12 @@ import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
 import { useContext } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
-// import axios from "axios";
-// import { useContext } from "react";
-// import { AuthContext } from "../../../AuthProvider/AuthProvider";
-// import { useEffect } from "react";
 
 
 const NavBar = () => {
 const [cart]=useCart()
 console.log(cart);
 const {logout,user}=useContext(AuthContext)
-    
-
-//    const {user}=useContext(AuthContext)
-//    const url=`http://localhost:3000/api/v1/show-cart-data?email=${user?.email}`
-
-//    useEffect(()=>{
-//     axios.get(url)
-//     .then(result=>{
-//         setShowCartData(result.data);
-//     })
-//    },[url])
-
-//    console.log(showCartData);
 
    
 

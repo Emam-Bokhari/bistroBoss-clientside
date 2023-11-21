@@ -1,12 +1,13 @@
 // import { useState } from "react";
 import { useContext } from "react";
 // import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 
 const Login = () => {
+  const navigate=useNavigate()
 
   // const [disabled,setDisabled]=useState(true)
   const {signin}=useContext(AuthContext)
@@ -24,6 +25,7 @@ const Login = () => {
 
     signin(email,password)
     .then(result=>{
+      navigate("/")
       console.log(result);
     })
     .catch(error=>{

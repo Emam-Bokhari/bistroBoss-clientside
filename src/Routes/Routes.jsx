@@ -10,6 +10,12 @@ import Register from "../pages/Register/Register";
 import Dashboard from "../Layout/Dashboard";
 import MyCart from "../components/MyCart/MyCart";
 import AllUsers from "../components/AllUsers/AllUsers";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AdminRoute from "../PrivateRoute/AdminRoute";
+import AddItems from './../components/AddItems/AddItems';
+import ManageItems from "../components/ManageItems/ManageItems";
+import UpdateMenuItem from "../components/UpdateMenuItem/UpdateMenuItem";
+import Payment from "../components/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -42,16 +48,33 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
       {
         path: "/dashboard/myCart",
         element: <MyCart />
       },
+      {
+        path: "/dashboard/payment",
+        element: <Payment />
+      },
       // admin routes
       {
+        path: "/dashboard/addItems",
+        element: <AdminRoute><AddItems /></AdminRoute>
+      },
+      {
         path: "/dashboard/allUsers",
-        element: <AllUsers />
+        element: <AdminRoute><AllUsers /></AdminRoute>
+      },
+      {
+        path: "/dashboard/manageItems",
+        element: <AdminRoute><ManageItems /></AdminRoute>
+      },
+      {
+        path: "/dashboard/updateMenuItem/:id",
+        loader: ({ params }) => fetch(`http://localhost:3000/api/v1/${params.id}/menu`),
+        element: <AdminRoute><UpdateMenuItem /></AdminRoute>
       }
     ]
   }

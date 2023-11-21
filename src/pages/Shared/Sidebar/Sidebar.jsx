@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Sidebar = () => {
-    const isAdmin = true
+    const [isAdmin] = useAdmin()
     return (
         <div className="my-10" >
             <nav className="w-[250px]" >
@@ -9,7 +10,7 @@ const Sidebar = () => {
                     {
                         isAdmin ?
                             <>
-                                <li className="px-4 py-1 hover:bg-blue-100 rounded cursor-pointer" ><Link to="/dashboard/adminHome"  >Admin Home</Link></li>
+                                <li className="px-4 py-1 hover:bg-blue-100 rounded cursor-pointer" ><Link to="/"  >Admin Home</Link></li>
 
                                 <li className="px-4 py-1 hover:bg-blue-100 rounded cursor-pointer" ><Link to="/dashboard/addItems" >Add Items</Link></li>
 
