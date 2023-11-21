@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 const MyCart = () => {
     const [cart,refetch]=useCart()
+    const totalPrice=cart.reduce((total,item)=>total+item.price,0)
     console.log(cart);
 
     const handleDelete=(_id)=>{
@@ -53,7 +54,7 @@ refetch()
             <div className="flex justify-evenly items-center" >
                     <h2>Total Order: {cart.length}</h2>
  
-                    <h2>Total Price: ${cart.reduce((total,item)=>total+item.price,0)}</h2>
+                    <h2>Total Price: ${totalPrice}</h2>
   
                    {cart.length?<Link to="/dashboard/payment" > <button className="bg-[#D1A054] px-3 py-1 rounded text-lg" >Pay</button></Link>
                    : 
